@@ -3,16 +3,17 @@
 
 public class Customer extends User {
 
-	public void main() {
-	
+	public static void main(String[] args) {
+		Customer customer = new Customer("user123", "1234");
+		customer.start();	
 	}
 
-	public Customer() {
-	
+	public Customer(userName, PIN) {
+		super(userName, PIN);
 	}
 
 	public void start() {
-	
+
 	}
 
 	public String menu() {
