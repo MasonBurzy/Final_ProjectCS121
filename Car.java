@@ -5,25 +5,31 @@ public abstract class Car {
 	private String carID;
 	private boolean isRented;
 
+	public car(String carID) {
+		this.carID = carID;
+		this.isRented = false;
+	}
+
 	public String getCarID() {
-
+		return carID;
 	}
 
-	public boolean is REnted() {
-	
+	public boolean isRented() {
+		return isRented;
 	}
 
-	public void rent() {
-	
+	public void rentCar() {
+		isRented = true;
 	}
 
 	public void returnCar() {
-	
+		isRented = false;
 	}
 
 	public String toString() {
-	
+		return carID + " - " + (isRented ? "Rented" : "Available");
 	}
+}
 
 
 
