@@ -1,6 +1,6 @@
 /// User ///
 
-import java.io.*
+import java.io.*;
 
 public abstract class User implements HasMenu {
 

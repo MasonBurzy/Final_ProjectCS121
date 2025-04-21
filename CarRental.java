@@ -30,7 +30,7 @@ public class CarRental implements HasMenu {
 		return false;
 	}
 
-	public void rentCar() {
+	public void boolean rentCar() {
 		for (Car car : cars) {
 			if (car.getCarID().equalsIgnoreCase(carID) && !car.isRented()) {
                 		car.rentTo(userID); // Rent the car to the user
@@ -40,8 +40,14 @@ public class CarRental implements HasMenu {
 		return false;
 	}
 	
-	public void returnCar() {
-	
+	public void returnCar(String carID, String userID) {
+		for (Car car : cars) {
+			if (car.getCarID().equalsIgnoreCase(carID) && car.isRented() && car.getRentedTo().equals(userID)) {
+                		car.returnCar(); // Return the car to the lot
+                		return true;
+			}
+		}
+		return false
 	}
 
 	public void main() {
