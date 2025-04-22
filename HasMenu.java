@@ -1,5 +1,6 @@
 /// HasMenu ///
 
+import java.util.Scanner;
 
 public interface HasMenu {
 

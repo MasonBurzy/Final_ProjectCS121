@@ -1,28 +1,34 @@
 /// CarRental ///
 
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class CarRental implements HasMenu {
 
-	private ArrayList cars;
-	private ArrayList customers;
+public class CarRental {
+
+	private ArrayList<Car> cars;
+	private ArrayList<Customer> customers;
 	private Customer lot;
 
+
+	public static void main(String[] args) {
+                CarRental system = new CarRental();
+                system.start();
+	}
 
 	public CarRental() {
 		this.cars = new ArrayList<>();
         	this.customers = new ArrayList<>();
-        	this.lot = new Customer("Lot", "0000");
+        	this.lot = new Customer("Lot", "0000", "Lot");
 	}
-
 
 	public void addCar(Car car) {
         	cars.add(car);
 	}
 
-
 	public boolean removeCar(String carID) {
 		for (Car car : cars) {
-			if (car.getCarID().equalsIgnoreCase(carID) && !car.isRented()) {
+			if (car.getCarID().equals(carID)) {
                 		cars.remove(car);
                 		return true;
 			}
@@ -30,56 +36,96 @@ public class CarRental implements HasMenu {
 		return false;
 	}
 
-	public void boolean rentCar() {
+	public boolean rentCar(String carID, String userID) {
 		for (Car car : cars) {
-			if (car.getCarID().equalsIgnoreCase(carID) && !car.isRented()) {
-                		car.rentTo(userID); // Rent the car to the user
+			if (car.getCarID().equals(carID) && car.isRented()) {
+                		car.returnCar();
                 		return true;
 			}
 		}
 		return false;
 	}
 	
-	public void returnCar(String carID, String userID) {
+	public boolean returnCar(String carID, String userID) {
 		for (Car car : cars) {
-			if (car.getCarID().equalsIgnoreCase(carID) && car.isRented() && car.getRentedTo().equals(userID)) {
-                		car.returnCar(); // Return the car to the lot
+			if (car.getCarID().equals(carID) && car.isRented()) {
+                		car.returnCar();
                 		return true;
 			}
 		}
-		return false
+		return false;
 	}
 
-	public void main() {
-	
+
+	public void displayAvailableCars() {
+		System.out.println("Available Cars:");
+		for (Car car : cars) {
+			if (!car.isRented()) {
+                		System.out.println("- " + car.getCarID() + ": " + car.toString());
+			}
+		}
 	}
 
-	public void loadCars() {
-	
+
+	public boolean isCarAvailable(String carID) {
+		for (Car car : cars) {
+			if (car.getCarID().equals(carID) && !car.isRented()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	public void menu() {
+
+	public ArrayList<Car> getAllCars() {
+        	return cars;
+	}
+
+
+	public Car findCarByID(String carID) {
+        	for (Car car : cars) {
+            		if (car.getCarID().equals(carID)) {
+                		return car;
+			}
+		}
+        	return null;
+	}
+
+	public boolean isCustomerRegistered(String userID) {
+        	for (Customer customer : customers) {
+            		if (customer.getUserName().equals(userID)) {
+                		return true;
+			}
+		}
+        	return false;
+	}
+
 	
+	public User findUser(String userName, String PIN) {
+		for (Customer customer : customers) {
+			if (customer.getUserName().equals(userName) && customer.getPIN().equals(PIN)) {
+                		return customer;
+			}
+		}
+		return null;
 	}
 
 	public void start() {
-	
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Welcome to the Car Rental System!");
+		System.out.println("Enter User Name: ");
+		String userName = scanner.nextLine();
+
+		System.out.println("Enter PIN: ");
+		String PIN = scanner.nextLine();
+
+		User user = findUser(userName, PIN);
+
+		if (user != null) {
+			user.startSession(this);
+		} else {
+			System.out.println("Invalid login.");
+		}
 	}
-
-	public void startAdmin() {
-	
-	}
-
-	public void addUser() {
-	
-	}
-
-	public void loadCustomer() {
-	
-	}
-
-	public void saveCustomer() {
-	
-	}
-
-
+}

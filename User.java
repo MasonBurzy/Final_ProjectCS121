@@ -1,22 +1,22 @@
 /// User ///
 
-import java.io.*;
+import java.util.Scanner;
 
 public abstract class User implements HasMenu {
 
 	private String userName = "";
 	private String PIN = "";
 
-	public boolean login(userName, PIN) {
-		scanner input = new Scanner(system.in);
+	public boolean login(String userName, String PIN) {
+		Scanner input = new Scanner(System.in);
 		boolean result = false;
 		System.out.println("User name: ");
-		String userName = input.nextLine();
+		String userNameIn = input.nextLine();
 
 		if (userNameIn.equals(this.userName)){
 			System.out.println("PIN: ");
-			String pinIN = input.nextLine();
-			if (pinIN.equals(this.PIN)) {
+			String pinIn = input.nextLine();
+			if (pinIn.equals(this.PIN)) {
 				System.out.println("Login Successful");
 				result = true;
 			} else {
@@ -36,7 +36,7 @@ public abstract class User implements HasMenu {
 		return userName;
 	}
 
-	public void setPIN(PIN) {
+	public void setPIN(String PIN) {
 		this.PIN = PIN;
 	}
 
@@ -44,4 +44,7 @@ public abstract class User implements HasMenu {
 		return PIN;
 	}
 
+	public abstract void startSession(CarRental system);
+
+}
 

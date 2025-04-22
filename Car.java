@@ -5,7 +5,7 @@ public abstract class Car {
 	private String carID;
 	private boolean isRented;
 
-	public car(String carID) {
+	public Car(String carID) {
 		this.carID = carID;
 		this.isRented = false;
 	}
@@ -26,10 +26,10 @@ public abstract class Car {
 		isRented = false;
 	}
 
+	@Override
 	public String toString() {
 		return carID + " - " + (isRented ? "Rented" : "Available");
 	}
 }
-
 
 
