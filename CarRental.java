@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class CarRental {
+public class CarRental implements HasMenu {
 
 	private ArrayList<Car> cars;
 	private ArrayList<Customer> customers;
@@ -110,22 +110,31 @@ public class CarRental {
 		return null;
 	}
 
-	public void start() {
-		Scanner scanner = new Scanner(System.in);
-
+	public String menu() {
+		Scanner scanner = new Scanner(System.in)
 		System.out.println("Welcome to the Car Rental System!");
-		System.out.println("Enter User Name: ");
-		String userName = scanner.nextLine();
+		System.out.println("0) Exit System\n 1) Login as Customer\n 2) Login as Admin");
+		String response = scanner.nextLine();
+		System.out.println("You selected: " + response);
+		return response;
+	}
 
-		System.out.println("Enter PIN: ");
-		String PIN = scanner.nextLine();
+	public void start() {
+		while (true) {
+			String response = menu();
 
-		User user = findUser(userName, PIN);
-
-		if (user != null) {
-			user.startSession(this);
-		} else {
-			System.out.println("Invalid login.");
+			if (response.equals("0")) {
+				return;
+				break;
+			} else if (response.equals("1")) {
+				System.out.println("Action: Login as Customer");
+				loginAsCustomer();
+			} else if (response.equals("2")) {
+				System.out.println("Action: Login as Admin");
+				loginAsAdmin();
+			} else {
+				System.out.println("Invalid choice, please try again.");
+			}
 		}
 	}
-}
+}}

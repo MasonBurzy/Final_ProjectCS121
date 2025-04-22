@@ -11,7 +11,7 @@ public class Admin extends Customer {
 	}
 
 
-	public void start(RentalSystem system) {
+	public void start(CarRental system) {
 		Scanner scanner = new Scanner(System.in);
 		
 		while (true) {
@@ -48,7 +48,7 @@ public class Admin extends Customer {
 		return response;
 	}
 
-	public void addCar(RentalSystem system, Scanner scanner) {
+	public void addCar(CarRental system, Scanner scanner) {
 		System.out.println("Enter new Car ID:");
 		String newCarID = scanner.nextLine();
 		Car newCar = new Car(newCarID);
@@ -56,7 +56,7 @@ public class Admin extends Customer {
 		System.out.println("Car added successfully: " + newCarID);
 	}
 
-	public void removeCar(RentalSystem system, Scanner scanner) {
+	public void removeCar(CarRental system, Scanner scanner) {
 		System.out.println("Enter Car ID to remove:");
 		String carID = scanner.nextLine();
 		boolean removed = system.removeCar(carID);
@@ -68,7 +68,7 @@ public class Admin extends Customer {
 		}
 	}
 
-	public void addCustomer(RentalSystem system, Scanner scanner) {
+	public void addCustomer(CarRental system, Scanner scanner) {
 		System.out.println("Enter new customer's username");
 		String userName = scanner.nextLine();
 		System.out.println("Enter new customer's PIN");

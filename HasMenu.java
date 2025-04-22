@@ -1,10 +1,8 @@
 /// HasMenu ///
 
-import java.util.Scanner;
-
 public interface HasMenu {
 
 	String menu();
-	void start();
+	void start(CarRental system);
 
 } // end HasMenu

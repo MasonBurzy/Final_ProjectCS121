@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.io.*;
 
 public class Customer extends User {
 
@@ -24,7 +24,6 @@ public class Customer extends User {
 		this.customerID = customerID;
 	}
 
-	@Override
 	public void start(CarRental system) {
 		Scanner scanner = new Scanner(System.in);
 
@@ -50,7 +49,6 @@ public class Customer extends User {
 	}
 
 	
-	@Override
 	public String menu(Scanner scanner) {
 		System.out.println("\n0) Exit\n1) Rent a Car\n2) Return a Car\n3) Change PIN");
 		String response = scanner.nextLine();
@@ -89,10 +87,5 @@ public class Customer extends User {
 
 	public void setPIN(String newPIN) {
 		this.PIN = newPIN;
-	}
-
-	@Override
-	public void startSession(CarRental system) {
-		start(system);
 	}
 }

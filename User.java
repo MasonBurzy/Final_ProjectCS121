@@ -3,6 +3,10 @@
 import java.util.Scanner;
 
 public abstract class User implements HasMenu {
+	
+	/*
+	public abstract void startSession(CarRental system);
+	*/
 
 	private String userName = "";
 	private String PIN = "";
@@ -43,8 +47,6 @@ public abstract class User implements HasMenu {
 	public String getPIN() {
 		return PIN;
 	}
-
-	public abstract void startSession(CarRental system);
 
 }
 

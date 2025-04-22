@@ -26,7 +26,6 @@ public abstract class Car {
 		isRented = false;
 	}
 
-	@Override
 	public String toString() {
 		return carID + " - " + (isRented ? "Rented" : "Available");
 	}

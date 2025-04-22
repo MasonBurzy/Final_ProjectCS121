@@ -11,7 +11,7 @@ Customer.class: Customer.java User.class Admin.class HasMenu.class
 User.class: User.java HasMenu.class
 	javac -g User.java
 
-CarRental.class: CarRental.java HasMenu.class
+CarRental.class: CarRental.java HasMenu.class User.class Customer.class Car.class
 	javac -g CarRental.java
 
 HasMenu.class: HasMenu.java
@@ -30,4 +30,4 @@ run: CarRental.class
 	java CarRental
 
 clean:
-	/ rm *.class
+	-rm *.class
